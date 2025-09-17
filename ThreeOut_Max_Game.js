@@ -62,19 +62,8 @@ function threeOut(){
             console.log(`Remaining lives: ${lives}`);
             score+=10;
             continue checkAns;
-        }else if(isNaN(playerAns)){
-            while(isNaN(playerAns)){
-                console.log(`Please enter a valid response`);
-                console.log(equation);
-                playerAns = Number(prompt());
-                if(playerAns == ans){
-                    console.log(`Congrats you gained 10 points`);
-                    console.log(`Remaining lives: ${lives}`);
-                    score+=10;
-                    continue checkAns;
-                }
-            }
-        }
+        }else if(isNaN(playerAns))
+            console.log(`Invalid input`);
         console.log(`Sorry you lost 5 points and a life`);
         lives--;
         console.log(`Remaining lives: ${lives}`);
@@ -120,7 +109,7 @@ function mediumDiff(){
         return console.log(equation);
     }
     if(arithOp === DIVIDE){
-        equation = `${Math.floor(Math.random()*10)} / ${Math.floor(Math.random()*10)}`;
+        equation = `${Math.floor(Math.random()*10)} / ${Math.floor(Math.random()*10)+1}`;
         ans = eval(equation);
         return console.log(equation);
     }
