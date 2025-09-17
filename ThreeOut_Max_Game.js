@@ -16,21 +16,27 @@ const MODULAR = 4;
 main();
 //easyDiff();
 
+//<------------------RUNNER------------------->
 function main(){
     console.log("Hello! Welcome to Max Out - Three Out the math game");
-    let gameMode = Number(prompt("Would you like to play the MAX OUT mode or THREE OUT mode"));
-    if(gameMode === 1)
+    let gameMode = ``;
+    while(!(gameMode == `MAX OUT` || gameMode == `THREE OUT`)){
+        gameMode = prompt("Would you like to play the MAX OUT mode or THREE OUT mode").toUpperCase();
+        console.log(gameMode);
+    }
+    if(gameMode == `MAX OUT`)
         maxScore();
-    else
+    else if(gameMode.toUpperCase() == `THREE OUT`)
         threeOut();
     console.log(`Thank you for playing! Your final score is ${score} points`);
 }
 
+//<----------------GAME MODE FUNCTION-------------->
 function maxScore(){
     console.log(`Good choice! What difficulty would you like to play at?`);
     let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
     checkAns: for(i = 0; i < 20; i++){
-        let playerAns = Number(prompt(diffSelect(gameDiff)));
+        let playerAns = Number(prompt(diffSelect(gameDiff.toUpperCase())));
         if(playerAns == ans){
             console.log(`Congrats you gained 10 points`);
             score+=10;
@@ -56,7 +62,7 @@ function threeOut(){
     console.log(`Good choice! What difficulty would you like to play at?`);
     let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
     checkAns: while(lives > 0){
-        let playerAns = Number(prompt(diffSelect(gameDiff)));
+        let playerAns = Number(prompt(diffSelect(gameDiff.toUpperCase())));
         if(playerAns == ans){
             console.log(`Congrats you gained 10 points`);
             console.log(`Remaining lives: ${lives}`);
@@ -71,12 +77,16 @@ function threeOut(){
     }
 }
 
+//<--------------DIFFICULTY FUNCTION--------------->
 function diffSelect(gameDiff){
-    if(gameDiff === "EASY")
+    while(!(gameDiff == `EASY` || gameDiff == `MEDIUM` || gameDiff == `HARD`)){
+        gameDiff = prompt(`EASY, MEDIUM, or HARD`);
+    }
+    if(gameDiff == "EASY")
         easyDiff();
-    if(gameDiff === "MEDIUM")
+    if(gameDiff == "MEDIUM")
         mediumDiff();
-    if(gameDiff === "HARD")
+    if(gameDiff == "HARD")
         hardDiff();
 }
 function easyDiff(){
