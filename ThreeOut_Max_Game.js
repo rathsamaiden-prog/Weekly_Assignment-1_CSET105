@@ -1,9 +1,12 @@
 const prompt = require('prompt-sync')();
 //<-------------GLOBAL VARS------------>
-let arithOp;
+//GAME CHECKS
 let ans;
 let equation;
-let score;
+let score = 0;
+let lives = 3;
+//ARITH MODE
+let arithOp;
 const ADD = 0;
 const SUBTRACT = 1;
 const MULTIPLY = 2;
@@ -25,7 +28,7 @@ function main(){
 
 function maxScore(){
     console.log(`Good choice! What difficulty would you like to play at?`);
-    let gameDiff = prompt(`EASY, MEDIUM, or HARD`)
+    let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
     checkAns: for(i = 0; i < 20; i++){
         let playerAns = Number(prompt(diffSelect(gameDiff)));
         if(playerAns == ans){
@@ -50,7 +53,33 @@ function maxScore(){
 }
 
 function threeOut(){
-    console.log("threeOut");
+    console.log(`Good choice! What difficulty would you like to play at?`);
+    let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
+    checkAns: while(lives > 0){
+        let playerAns = Number(prompt(diffSelect(gameDiff)));
+        if(playerAns == ans){
+            console.log(`Congrats you gained 10 points`);
+            console.log(`Remaining lives: ${lives}`);
+            score+=10;
+            continue checkAns;
+        }else if(isNaN(playerAns)){
+            while(isNaN(playerAns)){
+                console.log(`Please enter a valid response`);
+                console.log(equation);
+                playerAns = Number(prompt());
+                if(playerAns == ans){
+                    console.log(`Congrats you gained 10 points`);
+                    console.log(`Remaining lives: ${lives}`);
+                    score+=10;
+                    continue checkAns;
+                }
+            }
+        }
+        console.log(`Sorry you lost 5 points and a life`);
+        lives--;
+        console.log(`Remaining lives: ${lives}`);
+        score-=5;
+    }
 }
 
 function diffSelect(gameDiff){
@@ -72,7 +101,6 @@ function easyDiff(){
         ans = eval(equation);
         return console.log(equation);
      }
-
 }
 function mediumDiff(){
     arithOp = Math.floor(Math.random()*5);
