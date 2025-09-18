@@ -14,7 +14,6 @@ const DIVIDE = 3;
 const MODULAR = 4;
 
 main();
-//easyDiff();
 
 //<------------------RUNNER------------------->
 function main(){
