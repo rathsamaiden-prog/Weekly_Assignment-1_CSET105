@@ -20,7 +20,7 @@ function main(){
     console.log("Hello! Welcome to Max Score - Three Out the math game");
     let gameMode = ``;
     while(!(gameMode == `MAX SCORE` || gameMode == `THREE OUT`)){
-        gameMode = prompt("Would you like to play the MAX SCORE mode or THREE OUT mode").toUpperCase();
+        gameMode = prompt("Would you like to play the MAX SCORE mode or THREE OUT mode:  ").toUpperCase();
     }
     if(gameMode == `MAX SCORE`)
         maxScore();
@@ -31,9 +31,11 @@ function main(){
 
 //<----------------GAME MODE FUNCTION-------------->
 function maxScore(){
-    console.log(`Good choice! Max Score mode requires you to answer 20 equations. +10 points for the correct answer, -5 points for the incorrect answer. You are allowed to skip the equation by typing SKIP.\nWhat difficulty would you like to play at?`);
-    let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
+    console.log(`Good choice! Max Score mode requires you to answer 20 equations. +10 points for the correct answer, 
+        -5 points for the incorrect answer. You are allowed to skip the equation by typing SKIP.\nWhat difficulty would you like to play at?`);
+    let gameDiff = prompt(`EASY, MEDIUM, or HARD:  `);
     checkAns: for(i = 0; i < 20; i++){
+        console.log(`Current score: ${score}`);
         let playerAns = prompt(diffSelect(gameDiff.toUpperCase()));
         if(Number(playerAns) == ans){
             console.log(`Congrats you gained 10 points`);
@@ -64,8 +66,9 @@ function maxScore(){
 }
 
 function threeOut(){
-    console.log(`Good choice! In Three Out mode your goal is to answer as many equations correctly as possible. +10 points for the correct answer, -1 of 3 lives for the incorrect answer. \nWhat difficulty would you like to play at?`);
-    let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
+    console.log(`Good choice! In Three Out mode your goal is to answer as many equations correctly as possible. 
+        +10 points for the correct answer, -1 of 3 lives for the incorrect answer. \nWhat difficulty would you like to play at?`);
+    let gameDiff = prompt(`EASY, MEDIUM, or HARD:  `);
     checkAns: while(lives > 0){
         let playerAns = Number(prompt(diffSelect(gameDiff.toUpperCase())));
         if(playerAns == ans){
@@ -83,7 +86,7 @@ function threeOut(){
 //<--------------DIFFICULTY FUNCTION--------------->
 function diffSelect(gameDiff){
     while(!(gameDiff == `EASY` || gameDiff == `MEDIUM` || gameDiff == `HARD`)){
-        gameDiff = prompt(`EASY, MEDIUM, or HARD`);
+        gameDiff = prompt(`EASY, MEDIUM, or HARD:  `);
     }
     if(gameDiff == "EASY")
         easyDiff();
@@ -98,11 +101,11 @@ function easyDiff(){
     if(arithOp === ADD){
         equation = `${Math.floor(Math.random()*10)} + ${Math.floor(Math.random()*10)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }else{
         equation = `${Math.floor(Math.random()*10)} - ${Math.floor(Math.random()*10)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
      }
 }
 function mediumDiff(){
@@ -110,27 +113,27 @@ function mediumDiff(){
     if(arithOp === ADD){
         equation = `${Math.floor(Math.random()*100)} + ${Math.floor(Math.random()*100)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === SUBTRACT){
         equation = `${Math.floor(Math.random()*100)} - ${Math.floor(Math.random()*100)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === MULTIPLY){
         equation = `${Math.floor(Math.random()*10)} * ${Math.floor(Math.random()*10)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === DIVIDE){
         equation = `${Math.floor(Math.random()*10)} / ${Math.floor(Math.random()*10)+1}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === MODULAR){
         equation = `${Math.floor(Math.random()*10)} % ${Math.floor(Math.random()*10)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
 }
 function hardDiff(){
@@ -138,26 +141,26 @@ function hardDiff(){
     if(arithOp === ADD){
         equation = `${Math.floor(Math.random()*1000)} + ${Math.floor(Math.random()*1000)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === SUBTRACT){
         equation = `${Math.floor(Math.random()*1000)} - ${Math.floor(Math.random()*1000)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === MULTIPLY){
         equation = `${Math.floor(Math.random()*100)} * ${Math.floor(Math.random()*10)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === DIVIDE){
         equation = `${Math.floor(Math.random()*100)} / ${Math.floor(Math.random()*10)+1}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
     if(arithOp === MODULAR){
         equation = `${Math.floor(Math.random()*100)} % ${Math.floor(Math.random()*10)}`;
         ans = eval(equation);
-        return console.log(equation);
+        return console.log(equation+" = ");
     }
 }
