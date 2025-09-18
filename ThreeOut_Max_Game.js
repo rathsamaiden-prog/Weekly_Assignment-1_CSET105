@@ -18,13 +18,12 @@ main();
 
 //<------------------RUNNER------------------->
 function main(){
-    console.log("Hello! Welcome to Max Out - Three Out the math game");
+    console.log("Hello! Welcome to Max Score - Three Out the math game");
     let gameMode = ``;
-    while(!(gameMode == `MAX OUT` || gameMode == `THREE OUT`)){
-        gameMode = prompt("Would you like to play the MAX OUT mode or THREE OUT mode").toUpperCase();
-        console.log(gameMode);
+    while(!(gameMode == `MAX SCORE` || gameMode == `THREE OUT`)){
+        gameMode = prompt("Would you like to play the MAX SCORE mode or THREE OUT mode").toUpperCase();
     }
-    if(gameMode == `MAX OUT`)
+    if(gameMode == `MAX SCORE`)
         maxScore();
     else if(gameMode.toUpperCase() == `THREE OUT`)
         threeOut();
@@ -33,10 +32,9 @@ function main(){
 
 //<----------------GAME MODE FUNCTION-------------->
 function maxScore(){
-    console.log(`Good choice! What difficulty would you like to play at?`);
+    console.log(`Good choice! Max Score mode requires you to answer 20 equations. +10 points for the correct answer, -5 points for the incorrect answer. You are allowed to skip the equation by typing SKIP.\nWhat difficulty would you like to play at?`);
     let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
     checkAns: for(i = 0; i < 20; i++){
-        console.log(i + ` test`);
         let playerAns = prompt(diffSelect(gameDiff.toUpperCase()));
         if(Number(playerAns) == ans){
             console.log(`Congrats you gained 10 points`);
@@ -67,7 +65,7 @@ function maxScore(){
 }
 
 function threeOut(){
-    console.log(`Good choice! What difficulty would you like to play at?`);
+    console.log(`Good choice! In Three Out mode your goal is to answer as many equations correctly as possible. +10 points for the correct answer, -1 of 3 lives for the incorrect answer. \nWhat difficulty would you like to play at?`);
     let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
     checkAns: while(lives > 0){
         let playerAns = Number(prompt(diffSelect(gameDiff.toUpperCase())));
@@ -78,10 +76,8 @@ function threeOut(){
             continue checkAns;
         }else if(isNaN(playerAns))
             console.log(`Invalid input`);
-        console.log(`Sorry you lost 5 points and a life`);
         lives--;
         console.log(`Remaining lives: ${lives}`);
-        score-=5;
     }
 }
 
