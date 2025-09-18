@@ -13,7 +13,10 @@ const MULTIPLY = 2;
 const DIVIDE = 3;
 const MODULAR = 4;
 
+
+//<!!!--------------TURNS PROGRAM ON/OFF----------!!!>
 main();
+
 
 //<------------------RUNNER------------------->
 function main(){
@@ -164,3 +167,51 @@ function hardDiff(){
         return console.log(equation+" = ");
     }
 }
+
+
+
+//<----------------EXTRA TESTING__NOT PART OF FINAL PROJECT--------------->
+/*let testNum1;
+let testNum2;
+let testArithOp;
+let testArithOpSelect = [`+`, `-`, `*`, `/`, `%`];
+let testEquation;
+let testAns;
+
+
+function diffSelect(diff){
+    if(diff.toUpperCase() == `EASY`){
+        testNum1 = Math.floor(Math.random()*10).toString();
+        testNum2 = Math.floor(Math.random()*10).toString();
+        let randSelect = Math.floor(Math.random()*2);
+        testArithOp = testArithOpSelect[randSelect];
+    }else if(diff.toUpperCase() == `MEDIUM`){
+        testNum1 = Math.floor(Math.random()*10).toString();
+        testNum2 = Math.floor(Math.random()*10).toString();
+        let randSelect = Math.floor(Math.random()*5);
+        testArithOp = testArithOpSelect[randSelect];
+        if(randSelect == ADD || randSelect == SUBTRACT){
+            testNum1 = Math.floor(Math.random()*100).toString();
+            testNum2 = Math.floor(Math.random()*100).toString();
+        }else if(randSelect == DIVIDE){
+            testNum2 = (Math.floor(Math.random()*10)+1).toString();
+        }
+    }else if(diff.toUpperCase() == `HARD`){
+        testNum1 = Math.floor(Math.random()*100).toString();
+        testNum2 = Math.floor(Math.random()*10).toString();
+        let randSelect = Math.floor(Math.random()*5);
+        testArithOp = testArithOpSelect[randSelect];
+        if(randSelect == ADD || randSelect == SUBTRACT){
+            testNum1 = Math.floor(Math.random()*1000).toString();
+            testNum2 = Math.floor(Math.random()*1000).toString();
+        }else if(randSelect == DIVIDE){
+            testNum2 = (Math.floor(Math.random()*10)+1).toString();
+        }
+    }
+    testEquation = `${testNum1} ${testArithOp} ${testNum2}`;
+    testAns = eval(testEquation);
+}
+
+let testPlayerAns = prompt(`test`);
+diffSelect(testPlayerAns);
+console.log(testEquation);*/
