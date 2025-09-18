@@ -36,19 +36,27 @@ function maxScore(){
     console.log(`Good choice! What difficulty would you like to play at?`);
     let gameDiff = prompt(`EASY, MEDIUM, or HARD`);
     checkAns: for(i = 0; i < 20; i++){
-        let playerAns = Number(prompt(diffSelect(gameDiff.toUpperCase())));
-        if(playerAns == ans){
+        console.log(i + ` test`);
+        let playerAns = prompt(diffSelect(gameDiff.toUpperCase()));
+        if(Number(playerAns) == ans){
             console.log(`Congrats you gained 10 points`);
             score+=10;
             continue checkAns;
-        }else if(isNaN(playerAns)){
-            while(isNaN(playerAns)){
+        }else if(playerAns.toUpperCase() === `SKIP`){
+            console.log(`You have skipped this equation`);
+            i--;
+            continue checkAns;
+        }else if(isNaN(Number(playerAns))){
+            while(isNaN(Number(playerAns))){
                 console.log(`Please enter a valid response`);
-                console.log(equation);
-                playerAns = Number(prompt());
+                playerAns = Number(prompt(equation));
                 if(playerAns == ans){
                     console.log(`Congrats you gained 10 points`);
                     score+=10;
+                    continue checkAns;
+                }else if(isNaN(playerAns) && playerAns.toUpperCase() === `SKIP`){
+                    console.log(`You have skipped this equation`);
+                    i--;
                     continue checkAns;
                 }
             }
@@ -89,6 +97,7 @@ function diffSelect(gameDiff){
     if(gameDiff == "HARD")
         hardDiff();
 }
+
 function easyDiff(){
     arithOp = Math.floor(Math.random()*2);
     if(arithOp === ADD){
